@@ -9,13 +9,18 @@ const Header = () => {
     const {user , logOut} = useContext(AuthContext);
 
     const handleLogout =()=>{
-        logOut()
-        .then(res=>{
-            toast("log out Done!!")
-        })
-        .catch(er=>{
-            console.log(er.message);
-        })
+        if(user){
+            logOut()
+            .then(res=>{
+                toast("log out Done!!")
+            })
+            .catch(er=>{
+                console.log(er.message);
+            })
+        }
+        else{
+            toast("Please Log in first");
+        }
     }
 
     return (

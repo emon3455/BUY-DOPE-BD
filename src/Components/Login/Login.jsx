@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center mt-6 lg:mt-8">
+        <div className="flex justify-center mt-4 lg:mt-6">
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mb-1">
                     <h2 className='text-2xl lg:text-3xl text-center p-2 font-semibold text-sky-500'>
                         Please Login !!
@@ -71,6 +71,7 @@ const Login = () => {
                             </p>
                             <p className='text-red-600'>
                                 {error}
+                                
                             </p>
                         </div>
                     </form>

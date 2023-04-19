@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/Provider';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
@@ -47,7 +47,7 @@ const Register = () => {
     }
 
     return (
-        <div className="flex justify-center mt-8 md:mt-12">
+        <div className="flex justify-center mt-4 md:mt-6">
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ">
                     <h2 className='text-2xl lg:text-3xl text-center p-2 font-semibold text-sky-500'>
                         Please Register !!
