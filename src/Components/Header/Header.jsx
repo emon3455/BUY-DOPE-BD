@@ -6,7 +6,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
 
     return (
-       <header className='bg-gray-900 text-white text-xl'>
+       <header className='bg-gray-900 text-white text-xl z-20'>
 
              <nav className='container mx-auto bg-slate-900 text-white p-4 flex justify-between'>
 
