@@ -8,7 +8,7 @@ const Register = () => {
 
     const [error , setError] = useState("");
 
-    const {createUser } = useContext(AuthContext);
+    const {createUser , updateUserProfile} = useContext(AuthContext);
 
     const handleRegister=(e)=>{
         e.preventDefault();
@@ -23,7 +23,14 @@ const Register = () => {
             const regUser = res.user;
             toast("Your Account has been created Successfully!!");
             e.target.reset();
-            
+
+            updateUserProfile(regUser,name)
+            .then(res=>{
+            })
+            .catch(er=>{
+                setError(er.message)
+            })
+
         })
         .catch(er=>{
             setError(er.message);

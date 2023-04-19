@@ -5,6 +5,7 @@ import { AuthContext } from '../../Provider/Provider';
 const Header = () => {
 
     const [open, setOpen] = useState(false);
+
     const {user} = useContext(AuthContext);
 
     return (
@@ -36,6 +37,9 @@ const Header = () => {
                     <ActiveLink to="/login">Login</ActiveLink>
                     <ActiveLink to="/register">Register</ActiveLink>
                     <ActiveLink to="/orderdProduct">Orderd Product</ActiveLink>
+                    <p>
+                        {user && user.displayName}
+                    </p>
                 </ul>
 
             </nav>
