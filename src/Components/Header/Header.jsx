@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ActiveLink from '../ActiveLink/ActiveLink';
+import { AuthContext } from '../../Provider/Provider';
 
 const Header = () => {
 
     const [open, setOpen] = useState(false);
+    const {user} = useContext(AuthContext);
 
     return (
        <header className='bg-gray-900 text-white text-xl z-20'>
@@ -23,7 +25,7 @@ const Header = () => {
                         </span>
                     </div>
 
-                    <h2 className='text-3xl text-violet-400 font-serif font-semibold'>Buy Dope BD</h2>
+                    <h2 className='text-3xl text-violet-400 font-serif font-semibold'>Buy Dope BD </h2>
 
                 </div>
 
