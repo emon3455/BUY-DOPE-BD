@@ -8,7 +8,7 @@ const Register = () => {
 
     const [error , setError] = useState("");
 
-    const {createUser , updateUserProfile} = useContext(AuthContext);
+    const {createUser , updateUserProfile, emailVerify} = useContext(AuthContext);
 
     const handleRegister=(e)=>{
         e.preventDefault();
@@ -26,6 +26,14 @@ const Register = () => {
 
             updateUserProfile(regUser,name)
             .then(res=>{
+            })
+            .catch(er=>{
+                setError(er.message)
+            })
+
+            emailVerify(regUser)
+            .then(res=>{
+                toast("please check your email for verify your accounts!!")
             })
             .catch(er=>{
                 setError(er.message)

@@ -19,10 +19,10 @@ const Login = () => {
         .then(res=>{
             
             const logedUser = res.user;
+            console.log(logedUser);
             toast("Log in Successfull");
             e.target.reset();
 
-            
 
         })
         .catch(er=>{

@@ -1,49 +1,67 @@
 import React, { useContext, useState } from 'react';
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { AuthContext } from '../../Provider/Provider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
 
-    const [open, setOpen] = useState(false);
+    const {user , logOut} = useContext(AuthContext);
 
-    const {user} = useContext(AuthContext);
+    const handleLogout =()=>{
+        logOut()
+        .then(res=>{
+            toast("log out Done!!")
+        })
+        .catch(er=>{
+            console.log(er.message);
+        })
+    }
 
     return (
-       <header className='bg-gray-900 text-white text-xl z-20'>
-
-             <nav className='container mx-auto bg-slate-900 text-white p-4 flex justify-between'>
-
-                <div className="md:w-1/3 flex items-center gap-4">
-
-                    <div onClick={()=> setOpen(!open)} className="md:hidden">
-                        <span>
-                            {
-                                open===true ? 
-                                <i className="fa-solid fa-xmark fa-xl"></i>
-                                : 
-                                <i className="fa-solid fa-bars fa-xl"></i>
-                            }
-                        </span>
+        <div className="navbar bg-base-100">
+            <div className="navbar-start">
+                <div className="dropdown">
+                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><ActiveLink to="/">Home</ActiveLink></li>
+                        <li><ActiveLink to="/about">About</ActiveLink></li>
+                        <li><ActiveLink to="/login">Login</ActiveLink></li>
+                        <li><ActiveLink to="/register">Register</ActiveLink></li>
+                        <li><ActiveLink to="/orderdProduct">Orderd Product</ActiveLink></li>
+                    </ul>
+                </div>
+                <a className="p-1 normal-case text-xl">Buy Dope BD</a>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1">
+                        <li><ActiveLink to="/">Home</ActiveLink></li>
+                        <li><ActiveLink to="/about">About</ActiveLink></li>
+                        <li><ActiveLink to="/login">Login</ActiveLink></li>
+                        <li><ActiveLink to="/register">Register</ActiveLink></li>
+                        <li><ActiveLink to="/orderdProduct">Orderd Product</ActiveLink></li>
+                </ul>
+                </div>
+                <div className="navbar-end space-x-2">
+                    <p>
+                         {user?.displayName}
+                    </p>
+                    <div className=" dropdown dropdown-left">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                            <img src={user &&  user.photoURL || "https://i0.wp.com/digitalhealthskills.com/wp-content/uploads/2022/11/3da39-no-user-image-icon-27.png?fit=500%2C500&ssl=1"} />
+                            </div>
+                            
+                        </label>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li onClick={handleLogout}><a>Logout</a></li>
+                        </ul>
                     </div>
-
-                    <h2 className='text-3xl text-violet-400 font-serif font-semibold'>Buy Dope BD </h2>
-
                 </div>
 
-                <ul className={`bg-slate-900 w-full md:w-2/3 p-1 text-white flex flex-col md:flex-row md:justify-around text-xl
-                 absolute md:static left-0 ${open ? 'top-14' : '-top-36'}`}>
-                    <ActiveLink to="/">Home</ActiveLink>
-                    <ActiveLink to="/about">About</ActiveLink>
-                    <ActiveLink to="/login">Login</ActiveLink>
-                    <ActiveLink to="/register">Register</ActiveLink>
-                    <ActiveLink to="/orderdProduct">Orderd Product</ActiveLink>
-                    <p>
-                        {user && user.displayName}
-                    </p>
-                </ul>
-
-            </nav>
-       </header>
+      </div>
     );
 };
 
