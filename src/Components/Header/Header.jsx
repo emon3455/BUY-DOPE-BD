@@ -33,7 +33,7 @@ const Header = () => {
                         <li><ActiveLink to="/orderdProduct">Orderd Product</ActiveLink></li>
                     </ul>
                 </div>
-                <a className="p-1 normal-case text-xl">Buy Dope BD</a>
+                <a className="p-1 normal-case text-2xl font-bold text-violet-500">Buy Dope BD</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
