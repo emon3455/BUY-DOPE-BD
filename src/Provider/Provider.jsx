@@ -14,10 +14,12 @@ const Provider = ({children}) => {
     const [loading , setLoading] = useState(true);
 
     const createUser=(email,passwords)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,passwords);
     }
 
     const logInUser = (email, password)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email ,password);
     }
 

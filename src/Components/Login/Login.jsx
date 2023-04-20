@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
@@ -9,6 +9,10 @@ const Login = () => {
 
     const [error , setError] = useState("");
     const {logInUser,logWithGoogle} = useContext(AuthContext);
+
+    const navigate  = useNavigate();
+    const location = useLocation();
+    const from  = location.state?.from?.pathname || "/";
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -24,6 +28,7 @@ const Login = () => {
             toast("Log in Successfull");
             e.target.reset();
 
+            navigate(from, {replace: true})
 
         })
         .catch(er=>{
@@ -71,7 +76,6 @@ const Login = () => {
                             </p>
                             <p className='text-red-600'>
                                 {error}
-                                
                             </p>
                         </div>
                     </form>
